@@ -1,0 +1,252 @@
+<div class="p-5 d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body bg-light">
+            <h5 class="card-title text-center" *ngIf="edit; else elseBlock">
+              Update product
+            </h5>
+            <ng-template #elseBlock>
+              <h5 #elseBlock class="card-title text-center">Create product</h5>
+            </ng-template>
+            <form
+              [formGroup]="formGroup"
+              (ngSubmit)="onSubmit()"
+              class="p-fluid"
+            >
+              <div class="row">
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Handle</label>
+                    <input
+                      type="text"
+                      formControlName="handle"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('handle')?.errors?.['required']"
+                    >
+                    Handle is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Title</label>
+                    <input
+                      type="text"
+                      formControlName="title"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('title')?.errors?.['required']"
+                    >
+                    Title is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="p-field m-3">
+                    <label>Description</label>
+                    <textarea
+                      class="form-control"
+                      formControlName="description"
+                    ></textarea>
+                    
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('description')?.errors?.['required']"
+                    >
+                    Description is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>SKU</label>
+                    <input
+                      type="text"
+                      formControlName="sku"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('sku')?.errors?.['required']"
+                    >
+                    SKU is required.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Grams</label>
+                    <input
+                      type="text"
+                      formControlName="grams"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('grams')?.errors?.['required']"
+                    >
+                      Grams is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('grams')?.errors?.['min']"
+                    >
+                      Grams must be greater than or equal to 0.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('grams')?.errors?.['pattern']"
+                    >
+                      Enter a valid value for grams (up to 3 decimal places).
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Stock</label>
+                    <input
+                      type="text"
+                      formControlName="stock"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('stock')?.errors?.['required']"
+                    >
+                      Stock is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('stock')?.errors?.['min']"
+                    >
+                      Stock must be greater than or equal to 0.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('stock')?.errors?.['pattern']"
+                    >
+                      Stock must be a valid number.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Price</label>
+                    <input
+                      type="text"
+                      formControlName="price"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('price')?.errors?.['required']"
+                    >
+                      Price is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('price')?.errors?.['min']"
+                    >
+                      Price must be greater than or equal to 0.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('price')?.errors?.['pattern']"
+                    >
+                      Enter a valid price (up to 2 decimal places, separated by
+                      comma).
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Compare Price</label>
+                    <input
+                      type="text"
+                      formControlName="comparePrice"
+                      class="form-control"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('comparePrice')?.errors?.['required']"
+                    >
+                      Compare Price is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('comparePrice')?.errors?.['min']"
+                    >
+                      Compare Price must be greater than or equal to 0.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('comparePrice')?.errors?.['pattern']"
+                    >
+                      Compare Price a valid price (up to 2 decimal places,
+                      separated by comma).
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="p-field m-3">
+                    <label>Barcode</label>
+                    <input
+                      type="text"
+                      formControlName="barcode"
+                      class="form-control"
+                    />
+                    <div *ngIf="formGroup.get('barcode')?.errors?.['min']">
+                      Barcode must be greater than or equal to 0.
+                    </div>
+                    <div *ngIf="formGroup.get('barcode')?.errors?.['pattern']">
+                      Barcode must be a valid number.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12" *ngIf="edit; else elseBlock">
+                  <div class="d-grid gap-2">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      [disabled]="formGroup.invalid"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+                <ng-template #elseBlock>
+                  <div class="col-12">
+                    <div class="d-grid gap-2">
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        [disabled]="formGroup.invalid"
+                      >
+                        Create
+                      </button>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

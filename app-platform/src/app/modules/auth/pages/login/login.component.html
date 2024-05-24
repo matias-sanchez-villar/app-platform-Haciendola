@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body bg-light">
+          <h5 class="card-title">Iniciar sesión</h5>
+          <form [formGroup]="formGroup" (ngSubmit)="formSubmitEventHandler()">
+            <app-access
+              [formGroup]="formGroup"
+              (formGroupChanged)="actualizarFormGroup($event)"
+            ></app-access>
+            <div class="text-center m-2">
+              <a
+                routerLink="/recover"
+                class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover m-2"
+                >Olvide mi password</a
+              >
+            </div>
+            <div class="text-center">
+              <button routerLink="/register" type="button" class="btn btn-outline-secondary m-2">
+                Crear cuenta
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary m-2"
+                [disabled]="formGroup.invalid"
+              >
+                Iniciar sesión
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

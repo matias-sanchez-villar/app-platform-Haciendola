@@ -1,0 +1,46 @@
+<div class="container m-3">
+  <div class="row">
+    <h1>Product list</h1>
+  </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table col-12 border rounded">
+        <thead>
+          <tr class="text-center">
+            <th>sku</th>
+            <th>title</th>
+            <th>grams</th>
+            <th>stock</th>
+            <th>price</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products" class="text-center">
+            <td>{{ product.sku }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.grams }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button
+                (click)="clickBtnEdit(product)"
+                type="button"
+                class="btn btn-primary m-2"
+              >
+                Editar
+              </button>
+              <button
+                (click)="clickBtnDelete(product.id)"
+                type="button"
+                class="btn btn-danger m-2"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="p-5 d-flex justify-content-center align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body bg-light">
+            <h5 class="card-title text-center">Registrarse</h5>
+            <form [formGroup]="formGroup" (ngSubmit)="formSubmitEventHandler()">
+              <div class="row">
+                <div class="col-12 p-2">
+                  <label class="form-label">Nombre</label>
+                  <input
+                    formControlName="firstName"
+                    type="text"
+                    class="form-control"
+                    placeholder="Matias"
+                  />
+                  <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('firstName')?.errors?.['required']"
+                    >
+                    Nombre is required.
+                    </div>
+                </div>
+                <div class="col-12 p-2">
+                  <label class="form-label">Apellido</label>
+                  <input
+                    formControlName="lastName"
+                    type="text"
+                    class="form-control"
+                    placeholder="Sanchez villar"
+                  />
+                  <div
+                      class="invalid-feedback"
+                      *ngIf="formGroup.get('lastName')?.errors?.['required']"
+                    >
+                    Apellido is required.
+                    </div>
+                </div>
+                <div class="col-12 p-2">
+                  <label class="form-label">Teléfono</label>
+                  <input
+                    formControlName="phone"
+                    type="text"
+                    class="form-control"
+                    placeholder="291-5033425"
+                  />
+                </div>
+                <div class="col-12 p-2">
+                  <label class="form-label">Fecha de nacimiento</label>
+                  <input
+                    formControlName="dateOfBirth"
+                    type="date"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+              <app-access
+                [formGroup]="formGroup"
+                (formGroupChanged)="actualizarFormGroup($event)"
+              >
+              </app-access>
+              <div class="text-center">
+                <button
+                  (click)="goBack()"
+                  type="button"
+                  class="btn btn-outline-secondary m-2"
+                >
+                  Regresar
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary m-2"
+                  [disabled]="formGroup.invalid"
+                >
+                  Registrarse
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
